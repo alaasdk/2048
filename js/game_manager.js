@@ -87,8 +87,10 @@ GameManager.prototype.actuate = function () {
 
   // Clear the state when the game is over (game over only, not win)
   if (this.over) {
+      console.log("this .over");
     this.storageManager.clearGameState();
   } else {
+      console.log("ELSE this .over");
     this.storageManager.setGameState(this.serialize());
   }
 
@@ -187,6 +189,7 @@ GameManager.prototype.move = function (direction) {
     this.addRandomTile();
 
     if (!this.movesAvailable()) {
+        console.log("this .over true"); // Ezz
       this.over = true; // Game over!
     }
 
