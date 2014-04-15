@@ -125,9 +125,22 @@ HTMLActuator.prototype.updateBestScore = function (bestScore) {
 };
 
 HTMLActuator.prototype.message = function (won) {
+
+    //get the max number using jquery
+    var tiles = $(".tile-inner");
+    var max = 2;
+
+    for (var i = 0; i < tiles.length; i++) {
+        var val = parseInt($(tiles[i]).text());
+        if (val > max) { max = val; }
+    }
+
+
+
   var type    = won ? "game-won" : "game-over";
-  var message = won ? "Congratulations, You unlocked #!" : "Congratulations, You unlocked #!";
-  debugger;
+
+    var message = "Congratulations, You unlocked   " + max; 
+  
   this.messageContainer.classList.add(type);
   this.messageContainer.getElementsByTagName("p")[0].textContent = message;
 };
